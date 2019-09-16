@@ -8,16 +8,20 @@ app = Flask(__name__)
 def index():
     """Return homepage."""
     # TODO: Extract the query term from url using request.args.get()
-
+    query = request.args.get('query')
     # TODO: Make 'params' dictionary containing:
     # a) the query term, 'q'
     # b) your API key, 'key'
     # c) how many GIFs to return, 'limit'
-
-    # TODO: Make an API call to Tenor using the 'requests' library. For 
-    # reference on how to use Tenor, see: 
+    params = {
+      'q': query,
+      'key': "5CFEKEV8TNLP",
+      'limit': 10
+    }
+    # TODO: Make an API call to Tenor using the 'requests' library. For
+    # reference on how to use Tenor, see:
     # https://tenor.com/gifapi/documentation
-
+    r = requests.get("https://api.tenor.com/v1/trending?key=%s&limit=%s" % (params['key'], params['limit']))
     # TODO: Use the '.json()' function to get the JSON of the returned response
     # object
 
