@@ -32,6 +32,11 @@
 * Check the documentation!
 - Type-ahead: as the user types in the search box, the page is reloading the gifs to match the search query in real time (no longer =needing to click the search button)
 
+### Tasks
+* get API call working
+* get the function to pass the information to the templates.
+* add in the input feature
+* 
 
 ### User Stories
 User can 
