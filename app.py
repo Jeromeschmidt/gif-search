@@ -14,7 +14,7 @@ def index():
     # b) your API key, 'key'
     # c) how many GIFs to return, 'limit'
     params = {
-      'q': "excited",
+      'q': query,
       'key': "5CFEKEV8TNLP",
       'limit': 10
     }
