@@ -18,6 +18,18 @@
     </p>
     <button type="submit">Search</button>
 </form>
+<br/>
+<p>empty search please try again</p>
+<p>
+{% if len(result_str) == 0 %}
+    <p>Sorry we can't find your gif that you wanted :(</p>
+{%else%}
+    {% for gif in result_str%}
+        {%include 'gif.html'%}
+    {%endfor%}
+{%endif%}
+</p>
+
 {% endblock %}
 <!-- TODO: Make a for loop to loop over GIFs passed in from the server -->
 <!-- TODO: For each gif, include the 'gif.html' template to display it -->
