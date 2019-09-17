@@ -27,12 +27,16 @@ def index():
     result_json = json.loads(r.content)
     # TODO: Using dictionary notation, get the 'results' field of the JSON,
     # which contains the GIFs as a list
-    result_str = list()
+    result_url = list()
+    result_id = list()
+    result_itemurl = list()
     for i in range(params['limit']):
-        result_str.append(result_json['results'][i]['media'][0]['mediumgif']['url'])
+        result_url.append(result_json['results'][i]['media'][0]['mediumgif']['url'])
+        result_id.append(result_json['results'][i]['id'])
+        result_itemurl.append(result_json['results'][i]['itemurl'])
     # TODO: Render the 'index.html' template, passing the list of gifs as a
     # named parameter called 'gifs'
-    return render_template("index.html", result_str=result_str)
+    return render_template("index.html", result_url=result_url, result_id=result_id, result_itemurl=result_itemurl)
 
 if __name__ == '__main__':
     app.run(debug=True)
