@@ -21,13 +21,9 @@
 <br/>
 <p>empty search please try again</p>
 <p>
-{% if len(result_str) == 0 %}
-    <p>Sorry we can't find your gif that you wanted :(</p>
-{%else%}
-    {% for gif in result_str%}
-        {%include 'gif.html'%}
-    {%endfor%}
-{%endif%}
+{% for gif in result_list%}
+    {%include 'gif.html'%}
+{%endfor%}
 </p>
 
 {% endblock %}
