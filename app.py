@@ -9,7 +9,6 @@ def index():
     """Return homepage."""
     # TODO: Extract the query term from url using request.args.get()
     query = request.args.get('name')
-    print(query)
     # TODO: Make 'params' dictionary containing:
     # a) the query term, 'q'
     # b) your API key, 'key'
@@ -25,10 +24,12 @@ def index():
     r = requests.get("https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (params['q'], params['key'], params['limit']))
     # TODO: Use the '.json()' function to get the JSON of the returned response
     # object
-    result_json = r.json()
+    result_json = json.loads(r.content)
     # TODO: Using dictionary notation, get the 'results' field of the JSON,
     # which contains the GIFs as a list
-    result_str = result_json["results"]
+    result_str = list()
+    for i in range(params['limit']):
+        result_str.append(result_json['results'][i]['media'][0]['mediumgif']['url'])
     # TODO: Render the 'index.html' template, passing the list of gifs as a
     # named parameter called 'gifs'
     return render_template("index.html", result_str=result_str)
