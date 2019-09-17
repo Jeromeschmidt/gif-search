@@ -30,13 +30,18 @@ def index():
     result_url = list()
     result_id = list()
     result_itemurl = list()
+    result_dict = dict()
+
     for i in range(params['limit']):
-        result_url.append(result_json['results'][i]['media'][0]['mediumgif']['url'])
-        result_id.append(result_json['results'][i]['id'])
-        result_itemurl.append(result_json['results'][i]['itemurl'])
+        result_dict[i]['id'] = result_id[i]
+        result_dict[i]['itemurl'] = result_itemurl[i]
+        result_dict[i]['url'] = result_url[i]
+        # result_url.append(result_json['results'][i]['media'][0]['mediumgif']['url'])
+        # result_id.append(result_json['results'][i]['id'])
+        # result_itemurl.append(result_json['results'][i]['itemurl'])
     # TODO: Render the 'index.html' template, passing the list of gifs as a
     # named parameter called 'gifs'
-    return render_template("index.html", result_url=result_url, result_id=result_id, result_itemurl=result_itemurl)
+    return render_template("index.html", result_dict=result_dict)
 
 if __name__ == '__main__':
     app.run(debug=True)
