@@ -8,7 +8,8 @@ app = Flask(__name__)
 def index():
     """Return homepage."""
     # TODO: Extract the query term from url using request.args.get()
-    query = request.args.get('query')
+    query = request.args.get('name')
+    print(query)
     # TODO: Make 'params' dictionary containing:
     # a) the query term, 'q'
     # b) your API key, 'key'
@@ -30,7 +31,7 @@ def index():
     result_str = result_json["results"]
     # TODO: Render the 'index.html' template, passing the list of gifs as a
     # named parameter called 'gifs'
-    return render_template("index.html")
+    return render_template("index.html", result_str=result_str)
 
 if __name__ == '__main__':
     app.run(debug=True)
