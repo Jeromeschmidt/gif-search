@@ -19,11 +19,14 @@
     <button type="submit">Search</button>
 </form>
 <br/>
-<p>empty search please try again</p>
 <p>
-{% for gif in result_list%}
-    {%include 'gif.html'%}
-{%endfor%}
+    {% if are_results == True %}
+        {% for gif in result_list%}
+            {%include 'gif.html'%}
+        {%endfor%}
+    {% else %}
+        NO RESULTS
+    {% endif %}
 </p>
 
 {% endblock %}
