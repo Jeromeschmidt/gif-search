@@ -11,24 +11,39 @@
     the search term to the query string. The form should have a target of '/' to
     send us to the same route. -->
 {% block content %}
-<form action='/'>
-    <p>
-        What would you like to search?
-        <input type="text" name="name"/>
-    </p>
-    <button type="submit">Search</button>
-</form>
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-lg-12">
+            <h1>Gif Search</h1>
+            <form action='/'>
+                <p>
+                    What would you like to search?
+                    <br/>
+                    <input type="text" name="name" placeholder="GIF SEARCH"/>
+                    <!-- <button type="submit">Search</button> -->
+                </p>
+            </form>
+            <form action='/random'>
+                <input type="text" name="name" placeholder="RANDOMIZE IT"/>
+            </form>
+            <form action='/trending'>
+                <button routerLink="/trending">Trending</button>
+            </form>
+        </div>
+    </div>
+</div>
 <br/>
-<p>
-    {% if are_results == True %}
-        {% for gif in result_list%}
-            {%include 'gif.html'%}
-        {%endfor%}
-    {% else %}
-        NO RESULTS
-    {% endif %}
-</p>
-
+<div class ="container">
+    <div class="row justify-content-md-center">
+        {% if are_results == True %}
+            {% for gif in result_list%}
+                <div class="col-sm-4" style="margin: 20">{%include 'gif.html'%}</div>
+            {%endfor%}
+        {% else %}
+            NO RESULTS
+        {% endif %}
+    </div>
+</div>
 {% endblock %}
 <!-- TODO: Make a for loop to loop over GIFs passed in from the server -->
 <!-- TODO: For each gif, include the 'gif.html' template to display it -->

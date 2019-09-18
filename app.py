@@ -31,23 +31,16 @@ def index():
     # object
     # TODO: Using dictionary notation, get the 'results' field of the JSON,
     # which contains the GIFs as a list
-    # result_url = list()
-    # result_id = list()
-    # result_itemurl = list()
-    # result_dict = dict()
+
         result_list = list()
         are_results = False
 
         result_json = json.loads(r.content)
         are_results = True
         for i in range(params['limit']):
-            # result_dict[i]['id'] = result_id[i]
-            # result_dict[i]['itemurl'] = result_itemurl[i]
-            # result_dict[i]['url'] = result_url[i]
-            result_list.append({"url": result_json['results'][i]['id'], "id": result_json['results'][i]['id'], "itemurl":result_json['results'][i]['itemurl']})
-            # result_url.append(result_json['results'][i]['media'][0]['mediumgif']['url'])
-            # result_id.append(result_json['results'][i]['id'])
-            # result_itemurl.append(result_json['results'][i]['itemurl'])
+
+            result_list.append({"url": result_json['results'][i]['url'], "id": result_json['results'][i]['id'], "itemurl":result_json['results'][i]['itemurl']})
+
         return render_template("index.html", result_list=result_list, are_results=are_results)
     except:
         return render_template("index.html")
@@ -88,7 +81,7 @@ def trending():
             # result_url.append(result_json['results'][i]['media'][0]['mediumgif']['url'])
             # result_id.append(result_json['results'][i]['id'])
             # result_itemurl.append(result_json['results'][i]['itemurl'])
-        return render_template("trending.html", result_list=result_list)
+        return render_template("index.html", result_list=result_list, are_results=are_results)
     except:
         return render_template("index.html")
 
@@ -128,7 +121,7 @@ def random():
             # result_url.append(result_json['results'][i]['media'][0]['mediumgif']['url'])
             # result_id.append(result_json['results'][i]['id'])
             # result_itemurl.append(result_json['results'][i]['itemurl'])
-        return render_template("random.html", result_list=result_list)
+        return render_template("index.html", result_list=result_list, are_results=are_results)
     except:
         return render_template("index.html")
 
