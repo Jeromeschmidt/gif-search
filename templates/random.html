@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Enter Your Info
+{% endblock %}
+<!-- TODO: Make an HTML form containing a search box and a submit button to add
+    the search term to the query string. The form should have a target of '/' to
+    send us to the same route. -->
+{% block content %}
+<form action='/random'>
+    <p>
+        What would you like to search?
+        <input type="text" name="name"/>
+    </p>
+    <button type="submit">Search</button>
+</form>
+<br/>
+<p>
+    {% for gif in result_list%}
+        {%include 'gif.html'%}
+    {%endfor%}
+</p>
+{% endblock %}
+<!-- TODO: Make a for loop to loop over GIFs passed in from the server -->
+<!-- TODO: For each gif, include the 'gif.html' template to display it -->

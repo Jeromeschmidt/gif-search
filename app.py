@@ -92,10 +92,12 @@ def trending():
     except:
         return render_template("index.html")
 
-@app.route('/trending')
-def trending():
+@app.route('/random')
+def random():
+    query = request.args.get('name')
 
     params = {
+      'q': query,
       'key': "5CFEKEV8TNLP",
       'limit': 10
     }
@@ -103,7 +105,7 @@ def trending():
     # reference on how to use Tenor, see:
     # https://tenor.com/gifapi/documentation
     try:
-        r = requests.get("https://api.tenor.com/v1/trending?key=%s&limit=%s" % (params['key'], params['limit']))
+        r = requests.get("https://api.tenor.com/v1/random?q=%s&key=%s&limit=%s" % (params['q'], params['key'], params['limit']))
 
     # TODO: Use the '.json()' function to get the JSON of the returned response
     # object
@@ -126,9 +128,10 @@ def trending():
             # result_url.append(result_json['results'][i]['media'][0]['mediumgif']['url'])
             # result_id.append(result_json['results'][i]['id'])
             # result_itemurl.append(result_json['results'][i]['itemurl'])
-        return render_template("trending.html", result_list=result_list)
+        return render_template("random.html", result_list=result_list)
     except:
         return render_template("index.html")
+
 
 if __name__ == '__main__':
     app.run(debug=True)
