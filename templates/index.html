@@ -1,13 +1,13 @@
 <!-- templates/index.html -->
 
 
-<!-- TODO: Extend 'base.html' and put content into a block 'body' to match -->
+<!-- Extend 'base.html' and put content into a block 'body' to match -->
 {% extends 'base.html' %}
 
 {% block title %}
     Enter Your Info
 {% endblock %}
-<!-- TODO: Make an HTML form containing a search box and a submit button to add
+<!-- Make an HTML form containing a search box and a submit button to add
     the search term to the query string. The form should have a target of '/' to
     send us to the same route. -->
 {% block content %}
@@ -21,7 +21,6 @@
                         What would you like to search?
                         <br/>
                         <input type="text" name="name" placeholder="GIF SEARCH"/>
-                        <!-- <button type="submit">Search</button> -->
                     </p>
                 </form>
                 <form action='/random'>
@@ -48,5 +47,3 @@
     </div>
 </div>
 {% endblock %}
-<!-- TODO: Make a for loop to loop over GIFs passed in from the server -->
-<!-- TODO: For each gif, include the 'gif.html' template to display it -->
