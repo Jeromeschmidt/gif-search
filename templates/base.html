@@ -11,38 +11,40 @@
 
     <!-- TODO: Make a block 'body' so that the homepage can extend base -->
     {% block content %}
-    <div class="container">
-        <div class="row justify-content-md-center">
-            <div class="col-lg-12">
-                <h1>Gif Search</h1>
-                <form action='/'>
-                    <p>
-                        What would you like to search?
-                        <br/>
-                        <input type="text" name="name" placeholder="GIF SEARCH"/>
-                        <button type="submit">Search</button>
-                    </p>
-                </form>
-                <form action='/random'>
-                    <input type="text" name="name"placeholder="Randomize IT"/>
-                    <button routerLink="/random">Randomize It</button>
-                </form>
-                <form action='/trending'>
-                    <button routerLink="/trending">Trending</button>
-                </form>
+    <div align="center">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-lg-12">
+                    <h1>Gif Search</h1>
+                    <form action='/'>
+                        <p>
+                            What would you like to search?
+                            <br/>
+                            <input type="text" name="name" placeholder="GIF SEARCH"/>
+                            <!-- <button type="submit">Search</button> -->
+                        </p>
+                    </form>
+                    <form action='/random'>
+                        <input type="text" name="name" placeholder="RANDOMIZE IT"/>
+                    </form>
+                    <br/>
+                    <form action='/trending'>
+                        <button routerLink="/trending">Trending</button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-    <br/>
-    <div class ="container">
-        <div class="row justify-content-md-center">
-            {% if are_results == True %}
-                {% for gif in result_list%}
-                    <div class="col-sm-4" style="margin: 20">{%include 'gif.html'%}</div>
-                {%endfor%}
-            {% else %}
-                NO RESULTS
-            {% endif %}
+        <br/>
+        <div class ="container">
+            <div class="row justify-content-md-center">
+                {% if are_results == True %}
+                    {% for gif in result_list%}
+                        <div class="col-sm-4" style="margin: 10">{%include 'gif.html'%}</div>
+                    {%endfor%}
+                {% else %}
+                    NO RESULTS
+                {% endif %}
+            </div>
         </div>
     </div>
     {% endblock %}
