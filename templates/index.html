@@ -1,21 +1,28 @@
 <!-- templates/index.html -->
 <!-- Used button style guide from https://www.w3schools.com/css/css3_buttons.asp -->
 <style>
-.button {
-  background-color: #f45333;
-  border: none;
-  color: purple;
-  padding: 8px 24px;
-  text-align: center;
-  font-size: 16px;
-  opacity: 0.6;
-  transition: 0.3s;
-  cursor: pointer;
-}
+
+    .test {
+      background-color: #92a8d1;
+    }
+
+    .button {
+      background-color: #f45333;
+      border: none;
+      color: purple;
+      padding: 8px 24px;
+      text-align: center;
+      font-size: 16px;
+      opacity: 0.6;
+      transition: 0.3s;
+      cursor: pointer;
+    }
 
 .button:hover {opacity: 1}
 </style>
-
+<html>
+<head>
+</head>
 <!-- Extend 'base.html' and put content into a block 'body' to match -->
 {% extends 'base.html' %}
 
@@ -26,7 +33,7 @@
     the search term to the query string. The form should have a target of '/' to
     send us to the same route. -->
 {% block content %}
-<body>
+<body class = "test">
     <div align="center">
         <div class="container">
             <!-- <div class="row justify-content-md-center">
@@ -42,14 +49,11 @@
                     <form action='/random'>
                         <input type="text" name="name" placeholder="RANDOMIZE IT"/>
                     </form>
-                    <!-- <br/> -->
                     <form action='/trending'>
                         <button class="button">Trending</button>
                     </form>
-                <!-- </div>
-            </div> -->
         </div>
-        <br/>
+        <!-- <br/> -->
         <div class ="container">
             <div class="row justify-content-md-center">
                 {% if are_results == True %}
@@ -63,4 +67,5 @@
         </div>
     </div>
 <body>
+</html>
 {% endblock %}
