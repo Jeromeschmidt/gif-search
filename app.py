@@ -1,8 +1,15 @@
 from flask import Flask, render_template, request
 import requests
 import json
+import os
+
+from dotenv import load_dotenv
+load_dotenv()
+
+TENOR_API_KEY = os.getenv("TENOR_API_KEY")
 
 app = Flask(__name__)
+
 
 @app.route('/')
 def index():
@@ -16,7 +23,7 @@ def index():
     # c) how many GIFs to return, 'limit'
     params = {
       'q': query,
-      'key': "5CFEKEV8TNLP",
+      'key': TENOR_API_KEY,
       'limit': 10
     }
     #Make an API call to Tenor using the 'requests' library. For
@@ -49,7 +56,7 @@ def index():
 def trending():
 
     params = {
-      'key': "5CFEKEV8TNLP",
+      'key': TENOR_API_KEY,
       'limit': 10
     }
     # Make an API call to Tenor using the 'requests' library. For
@@ -79,7 +86,7 @@ def random():
 
     params = {
       'q': query,
-      'key': "5CFEKEV8TNLP",
+      'key': TENOR_API_KEY,
       'limit': 10
     }
     # Make an API call to Tenor using the 'requests' library. For
